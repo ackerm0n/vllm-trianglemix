@@ -30,8 +30,12 @@ from torch import nn
 from transformers import Qwen3Config
 
 from vllm.attention import Attention, AttentionType
-from vllm.attention.trianglemix_attention import (TriangleMixConfig,
-                                                   TriangleMixAttention)
+from vllm.attention.trianglemix_attention import TriangleMixConfig
+from vllm.attention.ascend_npu_trianglemix import (
+    AscendNPUTriangleMixConfig,
+    AscendNPUTriangleMixAttention,
+    IS_ASCEND_NPU,
+)
 from vllm.compilation.decorators import support_torch_compile
 from vllm.config import CacheConfig, VllmConfig
 from vllm.distributed import get_pp_group, get_tensor_model_parallel_world_size
